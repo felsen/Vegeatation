@@ -1,0 +1,17 @@
+
+<form method="post" action="/user-login/">
+{% csrf_token %}
+<table>
+{{ form.non_field_errors|striptags }}
+<tr>
+<td>{{ form.username.label_tag }}</td>
+<td>{{ form.username }} {{ form.username.errors|striptags }}</td>
+</tr>
+<tr>
+<td>{{ form.password.label_tag }}</td>
+<td>{{ form.password }} {{ form.password.errors|striptags }}</td>
+</tr>
+</table>
+<input type="hidden" name="next" value="/home/" />
+<input type="submit" value="login" />
+</form>

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block banner %}
+    <!--banner-starts-->
+    <div class="bnr" id="home">
+      <div  id="top" class="callbacks_container">
+	<ul class="rslides" id="slider4">
+          {% for h in home_banner %}
+	  <li>
+	    <img src="/{{ h.images }}" alt=""/>
+	  </li>
+          {% endfor %}
+	</ul>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <!--banner-ends-->
+    
+    <!--Slider-Starts-Here-->
+    <script src="/static/js/responsiveslides.min.js"></script>
+    <script type="text/javascript" >
+      // You can also use "$(window).load(function() {"
+      $(function () {
+      // Slideshow 4
+      $("#slider4").responsiveSlides({
+      auto: true,
+      pager: true,
+      nav: true,
+      speed: 500,
+      namespace: "callbacks",
+      before: function () {
+      $('.events').append("<li>before event fired.</li>");
+      },
+      after: function () {
+      $('.events').append("<li>after event fired.</li>");
+      }
+      });
+      
+      });
+    </script>
+    <!--End-slider-script-->
+{% endblock %}
+    
+{% block about %}
+    <!--about-starts-->
+    <div class="about"> 
+      <div class="container">
+	<div class="about-top grid-1">
+          {% for a in home_about %}
+	  <div class="col-md-4 about-left">
+  	    <figure class="effect-bubba">
+	      <img class="img-responsive" src="/{{ a.images }}" alt=""/>
+	      <figcaption>
+		<h2>{{ a.name }}</h2>
+		<p>{{ a.description }}</p>	
+	      </figcaption>			
+	    </figure>
+	  </div>
+          {% endfor %}
+	  <div class="clearfix"></div>
+	</div>
+      </div>
+    </div>
+    <!--about-end-->
+{% endblock %}
+    
